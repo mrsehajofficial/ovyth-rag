@@ -71,7 +71,7 @@ function rag_cosine(a, b) {
     if ma == 0.0 or mb == 0.0 {
         return 0.0
     }
-    return dot / ((ma ^ 0.5) * (mb ^ 0.5))
+    return dot / (sqrt(ma) * sqrt(mb))
 }
 
 // Sort by score, best first, and keep the top k. Selection sort: stores are
@@ -124,7 +124,7 @@ function rag_fake_embed(text) {
         v3 = v3 + 1.0
         i = i + 1
     }
-    mag = (v0 * v0 + v1 * v1 + v2 * v2 + 1.0) ^ 0.5
+    mag = sqrt(v0 * v0 + v1 * v1 + v2 * v2 + 1.0)
     return [v0 / mag, v1 / mag, v2 / mag, v3 / mag]
 }
 
